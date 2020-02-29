@@ -29,7 +29,6 @@ function lengthChoice() {
     if (typeof(length) !== "number") {
       alert("Not a number");
     } else if (length >= 8 && length <= 128) {
-      alert("success!!");
       return;
     } else {
       alert("Please enter a number between 8 and 128.");
@@ -55,7 +54,11 @@ function generatePassword() {
   passConfirm("Symbols", confirmSymbols, symbols);
   passConfirm("Numbers", confirmNumbers, numbers);
   
-  passwordPossibleCharacters.split("")
+  if (passwordPossibleCharacters === "") {
+    alert("Please try again. Confirm at least one of: lowercase letters/uppercase letters/Symbols/Numbers");
+    return;
+  }
+  passwordPossibleCharacters.split("");
   securePassword = "";
   for(i = 0; i < length; i++) {
     securePassword = securePassword + randomSymbol();
